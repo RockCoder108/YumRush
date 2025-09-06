@@ -83,23 +83,23 @@ async function logoutUser(req, res){
 async function registerFoodPartner(req, res){
     const { fullName, email, password } = req.body;
 
-    const isUserExist = await userModel.findOne({ email});
+    const isPartnerExist = await foodPartner.findOne({ email });
 
-    if(isUserExist){
-        return res.status(400).json({message:"User already exist"});
+    if (isPartnerExist) {
+      return res.status(400).json({ message: "User already exist" });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await userModel.create({
+    const partner = await foodPartner.create({
         fullName,
         email,
         password:hashedPassword,
     })
 
     const token = jwt.sign({
-        id: user._id,
-        
+        id: partner._id,
+
     }, process.env.JWT_SECRET, {expiresIn: "1d"});
 
     res.cookie("token", token)
@@ -108,9 +108,9 @@ async function registerFoodPartner(req, res){
     res.status(201).json({
         message: "User registered successfully",
         user: {
-            _id: user._id,
-            fullName: user.fullName,
-            email: user.email
+            _id: partner._id,
+            fullName: partner.fullName,
+            email: partner.email
         }
     })
 }
@@ -118,31 +118,38 @@ async function registerFoodPartner(req, res){
 async function loginFoodPartner(req, res){
     const {email, password} = req.body;
 
-    const user = await userModel.findOne({email});
+    const partner = await foodPartner.findOne({ email });
+    console.log("Looking for email:", email);
+    console.log("Found partner:", partner);
 
-    if(!user){
+
+
+    if(!partner){
         return res.status(400).json({message: "User does not exist"});
     }
 
-    const isPasswordValid = await bcrypt.compare(password, user.password);
+    const isPasswordValid = await bcrypt.compare(password, partner.password);
 
     if(!isPasswordValid){
         return res.status(400).json({message: "Invalid password"});
     }
 
-    const token = jwt.sign({
-        id: user._id,
-        
-    }, process.env.JWT_SECRET, {expiresIn: "1d"});
+    const token = jwt.sign({ id: partner._id }, process.env.JWT_SECRET, { expiresIn: "1d" });
 
-    res.cookie("token", token);
+
+    res.cookie("token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+
 
     res.status(200).json({
         message: "User logged in successfully",
         user: {
-            _id: user._id,
-            fullName: user.fullName,
-            email: user.email
+            _id: partner._id,
+            fullName: partner.fullName,
+            email: partner.email
         }
     });
 }

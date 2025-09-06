@@ -16,7 +16,7 @@ const foodSchema = new mongoose.Schema({
     },
     foodPartner:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: foodPartner,
+        ref: "foodPartner",
     }
 },{timestamps:true});
 

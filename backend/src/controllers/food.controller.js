@@ -3,18 +3,29 @@ import foodPartner from "../models/foodpartner.model.js";
 import storageService from "../services/storage.service.js";
 import { v4 as uuidv4 } from "uuid";
 async function createFood(req, res){
-    console.log(req.foodPartner);
+    // console.log(req.foodPartner);
 
-    console.log(req.body);
-    console.log(req.file);
+    // console.log(req.body);
+    // console.log(req.file);
+    // if (!req.foodPartner) {
+    //   return res.status(400).json({ message: "Food partner not found in request" });
+    // }
 
     const fileUploadResult = await storageService.uploadFile(req.file.buffer, uuidv4());
 
-    console.log(fileUploadResult);
+    // console.log(fileUploadResult);
+    const foodItem = await foodModel.create({
+        name: req.body.name,
+        description: req.body.description,
+        video: fileUploadResult.url,
+        foodPartner: req.foodPartner._id
+    })
 
-    res.send("food created");
+    res.status(201).json({ 
+        message: "Food created successfully",
+        foodItem 
+    });
 
-    
 }
 
 
