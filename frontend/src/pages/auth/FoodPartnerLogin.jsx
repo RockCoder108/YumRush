@@ -47,7 +47,7 @@ const FoodPartnerLogin = () => {
           <button className="auth-submit" type="submit">Sign In</button>
         </form>
         <div className="auth-alt-action">
-          New partner? <a href="/food-partner/register">Create an account</a>
+          New partner? <a href="/foodpartner/register">Create an account</a>
         </div>
       </div>
     </div>

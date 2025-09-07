@@ -23,7 +23,7 @@ const FoodPartnerRegister = () => {
           .post(
             "http://localhost:4000/api/auth/foodpartner/register",
             {
-              name: businessName,
+              fullName: businessName,
               contactName,
               phone,
               email,
@@ -34,7 +34,7 @@ const FoodPartnerRegister = () => {
           )
           .then((response) => {
             console.log(response.data);
-            navigate("/create-food"); // Redirect to create food page after successful registration
+            navigate("/createfood"); // Redirect to create food page after successful registration
           })
           .catch((error) => {
             console.error("There was an error registering!", error);
@@ -48,7 +48,7 @@ const FoodPartnerRegister = () => {
           <p className="auth-subtitle">Grow your business with our platform.</p>
         </header>
         <nav className="auth-alt-action" style={{marginTop: '-4px'}}>
-          <strong style={{fontWeight:600}}>Switch:</strong> <Link to="/user/register">User</Link> • <Link to="/food-partner/register">Food partner</Link>
+          <strong style={{fontWeight:600}}>Switch:</strong> <Link to="/user/register">User</Link> • <Link to="/foodpartner/register">Food partner</Link>
         </nav>
         <form className="auth-form" onSubmit={handleSubmit} noValidate>
           <div className="field-group">
@@ -81,7 +81,7 @@ const FoodPartnerRegister = () => {
           <button className="auth-submit" type="submit">Create Partner Account</button>
         </form>
         <div className="auth-alt-action">
-          Already a partner? <Link to="/food-partner/login">Sign in</Link>
+          Already a partner? <Link to="/foodpartner/login">Sign in</Link>
         </div>
       </div>
     </div>
