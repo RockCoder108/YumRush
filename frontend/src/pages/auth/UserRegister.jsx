@@ -1,13 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import "../../styles/auth-shared.css";
-// import axios from "axios";
-// import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const UserRegister = () => {
-    const handleSubmit = (e) => {
+
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic here
+
+        const firstName = e.target.firstName.value;
+        const lastName = e.target.lastName.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        const response = await axios.post("http://localhost:4000/api/auth/user/register", {
+            fullName: firstName + " " + lastName,
+            email,
+            password
+        }, { withCredentials: true });
+        // Navigate or show success message
+
+        console.log(response.data);
+
+        navigate("/");
     }
   return (
     <div className="auth-page-wrapper">

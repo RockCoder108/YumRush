@@ -4,9 +4,24 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const UserLogin = () => {
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
         // Handle form submission logic here
+
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        const response = await axios.post("http://localhost:4000/api/auth/user/login", {
+            email,
+            password
+        }, { withCredentials: true });
+        // Navigate or show success message
+
+        console.log(response.data);
+
+        navigate("/");
     }
   return (
         <div className="auth-page-wrapper">
