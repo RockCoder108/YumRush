@@ -1,15 +1,15 @@
 import React from 'react'
-
+import AppRoutes from './routes/AppRoutes'
 import './App.css'
 
 function App() {
-  
-
   return (
     <>
-      <h1>Samyak is here.</h1>
+      <AppRoutes />
     </>
   )
 }
 
 export default App
+
+// npm i react-router-dom
