@@ -119,8 +119,8 @@ async function loginFoodPartner(req, res){
     const {email, password} = req.body;
 
     const partner = await foodPartner.findOne({ email });
-    console.log("Looking for email:", email);
-    console.log("Found partner:", partner);
+    // console.log("Looking for email:", email);
+    // console.log("Found partner:", partner);
 
 
 
