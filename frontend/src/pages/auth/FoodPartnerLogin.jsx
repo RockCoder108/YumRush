@@ -4,9 +4,29 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const FoodPartnerLogin = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here
+
+    
+    const navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      // Handle form submission logic here
+
+      const email = e.target.email.value;
+      const password = e.target.password.value;
+
+      const response = await axios.post(
+        "http://localhost:4000/api/auth/foodpartner/login",
+        {
+          email,
+          password,
+        },
+        { withCredentials: true }
+      );
+
+      console.log(response.data);
+
+      navigate("/createfood"); // Redirect to create food page after login
     }
   return (
     <div className="auth-page-wrapper">
