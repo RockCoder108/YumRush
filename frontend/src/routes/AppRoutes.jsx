@@ -8,6 +8,8 @@ import FoodPartnerLogin from '../pages/auth/FoodPartnerLogin';
 import Home from '../pages/general/Home';
 import CreateFood from '../pages/foodpartner/CreateFood';
 import Profile from '../pages/foodpartner/Profile';
+import Saved from '../pages/general/Saved';
+import BottomNav from '../components/BottomNav';
 function AppRoutes() {
   return (
     <Router>
@@ -20,6 +22,7 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/createfood" element={<CreateFood />} />
         <Route path="/foodpartner/:id" element={<Profile />} />
+        <Route path="/saved" element={<><Saved /><BottomNav /></>} />
       </Routes>
     </Router>
   );

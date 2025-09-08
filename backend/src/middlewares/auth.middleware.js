@@ -1,4 +1,4 @@
-import e from "express";
+
 import foodPartner from "../models/foodpartner.model.js";
 import jwt from "jsonwebtoken";
 import userModel from "../models/user.model.js";
