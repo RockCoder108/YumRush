@@ -9,6 +9,7 @@ const Saved = () => {
     useEffect(() => {
         axios.get("http://localhost:4000/api/food/save", { withCredentials: true })
             .then(response => {
+               // console.log(response.data)
                 const savedFoods = response.data.savedFoods.map((item) => ({
                     _id: item.food._id,
                     video: item.food.video,
