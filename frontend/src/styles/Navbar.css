@@ -1,0 +1,63 @@
+.navbar {
+  position: fixed;            /* fixed to top like bottom nav is fixed to bottom */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 56px;               /* same height as bottom nav for consistency */
+  background: color-mix(in srgb, #000 35%, transparent); /* translucent dark bg */
+  backdrop-filter: blur(2px); /* frosted-glass effect */
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  z-index: 100;               /* sits above page content */
+}
+
+.navbar-left .navbar-brand {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;                /* white text for contrast on dark bg */
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navbar-right {
+  display: flex;
+  gap: 10px;
+}
+
+.navbar-btn {
+  background: rgba(255, 255, 255, 0.15); /* subtle translucent button */
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.navbar-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* Safe area for iOS notch */
+@supports(padding: max(0px)) {
+  .navbar { padding-top: max(env(safe-area-inset-top), 0px); }
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .navbar {
+    /* justify-content: center; */
+    gap: 1rem;
+  }
+  .navbar-right {
+    gap: 0.75rem;
+  }
+}

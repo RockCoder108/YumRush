@@ -10,6 +10,7 @@ import CreateFood from '../pages/foodpartner/CreateFood';
 import Profile from '../pages/foodpartner/Profile';
 import Saved from '../pages/general/Saved';
 import BottomNav from '../components/BottomNav';
+import Navbar from '../pages/general/Navbar';
 function AppRoutes() {
   return (
     <Router>
@@ -19,10 +20,10 @@ function AppRoutes() {
         <Route path="/user/login" element={<UserLogin />} />
         <Route path="/foodpartner/register" element={<FoodPartnerRegister />} />
         <Route path="/foodpartner/login" element={<FoodPartnerLogin />} />
-        <Route path="/" element={<><Home /><BottomNav /></>} />
+        <Route path="/" element={<><Navbar/><Home /><BottomNav /></>} />
         <Route path="/createfood" element={<CreateFood />} />
         <Route path="/foodpartner/:id" element={<Profile />} />
-        <Route path="/saved" element={<><Saved /><BottomNav /></>} />
+        <Route path="/saved" element={<><Navbar/><Saved /><BottomNav /></>} />
       </Routes>
     </Router>
   );
