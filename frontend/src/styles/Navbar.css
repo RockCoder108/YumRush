@@ -16,13 +16,22 @@
   z-index: 100;               /* sits above page content */
 }
 
-.navbar-left .navbar-brand {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #fff;                /* white text for contrast on dark bg */
+.navbar-brand {
+  font-family: "Poppins", sans-serif;       /* modern clean font */
+  font-size: 1.8rem;                         /* slightly larger */
+  font-weight: 700;                           /* bolder */
   letter-spacing: 1px;
+  background: linear-gradient(90deg, #ff6f62, #5cff7c); /* warm foodie gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;       /* gradient text effect */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);     /* subtle depth */
   cursor: pointer;
-  text-decoration: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  filter: brightness(1.8);
 }
 
 .navbar-right {

@@ -10,7 +10,7 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-left">
-                <span className="navbar-brand" onClick={() => navigate('/')}>Zomato</span>
+                <span className="navbar-brand" onClick={() => navigate('/')}>YumRush</span>
             </div>
             <div className="navbar-right">
                 <button className="navbar-btn" onClick={() => navigate('/user/login')}>Login</button>
