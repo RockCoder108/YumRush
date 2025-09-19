@@ -1,7 +1,11 @@
 import React from 'react'
+import { API_BASE_URL } from '../../config/config';
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+
+const API = API_BASE_URL;
 
 const FoodPartnerLogin = () => {
 
@@ -16,7 +20,7 @@ const FoodPartnerLogin = () => {
       const password = e.target.password.value;
 
       const response = await axios.post(
-        "http://localhost:4000/api/auth/foodpartner/login",
+        `${API}/api/auth/foodpartner/login`,
         {
           email,
           password,

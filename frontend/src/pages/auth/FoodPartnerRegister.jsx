@@ -1,8 +1,11 @@
 import React from 'react'
+import { API_BASE_URL } from '../../config/config';
 import { Link } from "react-router-dom";
 import "../../styles/auth-shared.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+const API = API_BASE_URL;
 
 const FoodPartnerRegister = () => {
 
@@ -21,7 +24,7 @@ const FoodPartnerRegister = () => {
 
         axios
           .post(
-            "http://localhost:4000/api/auth/foodpartner/register",
+            `${API}/api/auth/foodpartner/register`,
             {
               fullName: businessName,
               contactName,
