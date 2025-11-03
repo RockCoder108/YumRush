@@ -12,7 +12,7 @@ const router = express.Router();
 // POST /api/food/ [protected]
 router.post('/',authFoodPartner, upload.single('video'),createFood);
 
-router.get('/', authUserMiddleware, getFoodItems);
+router.get('/', getFoodItems);
 
 router.post('/like', authUserMiddleware, likeFood);
 
